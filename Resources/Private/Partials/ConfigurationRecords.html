@@ -8,20 +8,25 @@
 		<f:format.raw>{editLink}</f:format.raw>
 	</f:then>
 	<f:else>
-		<f:form action="{action}" method="post" class="form-inline">
-			<div class="form-group form-group-sm">
+		<f:form action="{action}" method="post" class="form-inline;">
+			<div class="form-group" style="display: flex;">
 				<f:form.select name="configuration"
 							   options="{configurationRecords}"
 							   value="{currentConfiguration}"
 							   optionValueField="uid"
 							   optionLabelField="name"
-							   class="form-select form-select-sm form-control"/>
+							   class="form-select"
+							   style="display: inline-flex; width: 100%;"/>
 
-				<div style="display: inline-block; margin-left: 5px;">
-					<f:format.raw>{editLink}</f:format.raw>
-				</div>
+				<f:form.submit
+						class="form-submit form-submit-sm form-control"
+						style="margin-inline-start: 1rem;"
+						value="{f:translate(key: 'module_docheader.configurations.switch')}"/>
+
 			</div>
-			<f:form.submit/>
+			<div style="margin-block-start: .5rem; display: flex;">
+				<span style="margin-inline: .375rem;">{f:translate(key: 'module_docheader.configurations.edit')}</span> <f:format.raw>{editLink}</f:format.raw>
+			</div>
 		</f:form>
 	</f:else>
 </f:if>
